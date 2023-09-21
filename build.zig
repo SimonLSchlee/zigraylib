@@ -24,14 +24,22 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
 
+    const raylib_optimize = b.option(
+        std.builtin.OptimizeMode,
+        "raylib-optimize",
+        "Prioritize performance, safety, or binary size (-O flag), defaults to value of optimize option",
+    ) orelse optimize;
+
+    const strip = b.option(
+        bool,
+        "strip",
+        "Strip debug info to reduce binary size, defaults to false",
+    ) orelse false;
+    exe.strip = strip;
+
     const raylib_dep = b.dependency("raylib", .{
         .target = target,
-        // .optimize = optimize,  // if you want to debug raylib enable this line
-
-        // compile raylib always with release fast, this way our app runs faster,
-        // even when we are debugging our app, because most of the time we don't
-        // actually want to debug raylib itself, only our own application
-        .optimize = .ReleaseFast,
+        .optimize = raylib_optimize,
     });
     exe.linkLibrary(raylib_dep.artifact("raylib"));
 
