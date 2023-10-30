@@ -17,6 +17,9 @@ tested with zig version: `0.12.0-dev.271+5cc1831ca`
 [Learn ⚡ Zig Programming Language](https://ziglang.org/learn/)  
 [Zig Community](https://github.com/ziglang/zig/wiki/Community)  
 
+## code completion
+[zls installation](https://github.com/zigtools/zls/wiki/Installation)
+
 ## ideas or improvements?
 Let me know if you have ideas about things that could make this example better.
 I want to keep it fairly minimal, but maybe we can add some more links to useful resources, or point out common problems.
