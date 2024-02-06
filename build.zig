@@ -35,7 +35,7 @@ pub fn build(b: *std.Build) void {
         "strip",
         "Strip debug info to reduce binary size, defaults to false",
     ) orelse false;
-    exe.strip = strip;
+    exe.root_module.strip = strip;
 
     const raylib_dep = b.dependency("raylib", .{
         .target = target,
