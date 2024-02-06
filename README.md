@@ -10,7 +10,7 @@ cd zigraylib
 zig build run
 ```
 
-tested with zig version: `0.12.0-dev.271+5cc1831ca`
+tested with zig version: `0.12.0-dev.2618+39ec3d311`
 
 ## resources
 [raylib cheatsheet](https://www.raylib.com/cheatsheet/cheatsheet.html)  
