@@ -16,6 +16,10 @@ using raylib commit: https://github.com/raysan5/raylib/tree/52f2a10db610d0e9f619
 [Learn ⚡ Zig Programming Language](https://ziglang.org/learn/)  
 [Zig Community](https://github.com/ziglang/zig/wiki/Community)  
 
+## raygui
+
+If you want to use raygui checkout the [raygui](https://github.com/SimonLSchlee/zigraylib/tree/raygui) branch.
+
 ## code completion
 [zls installation](https://github.com/zigtools/zls/wiki/Installation)
 
