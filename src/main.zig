@@ -32,6 +32,9 @@ fn ray_main() !void {
     var current_color: i32 = 2;
     var hint = true;
 
+    const rec = ray.Rectangle{ .x = 600, .y = 40, .width = 120, .height = 20 };
+    var value: f32 = 0;
+
     while (!ray.WindowShouldClose()) {
         // input
         var delta: i2 = 0;
@@ -58,6 +61,8 @@ fn ray_main() !void {
             const dynamic = try std.fmt.allocPrintZ(allocator, "running since {d} seconds", .{seconds});
             defer allocator.free(dynamic);
             ray.DrawText(dynamic, 300, 250, 20, ray.WHITE);
+
+            _ = ray.GuiSliderBar(rec, "StartAngle", null, &value, -450, 450);
 
             ray.DrawFPS(width - 100, 10);
         }

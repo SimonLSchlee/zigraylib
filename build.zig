@@ -37,11 +37,11 @@ pub fn build(b: *std.Build) void {
     ) orelse false;
     exe.root_module.strip = strip;
 
-    const raylib_dep = b.dependency("raylib", .{
-        .target = target,
-        .optimize = raylib_optimize,
+    const raylib = @import("raylib");
+    const raylib_artifact = try raylib.addRaylib(b, target, raylib_optimize, .{
+        .raygui = true,
     });
-    exe.linkLibrary(raylib_dep.artifact("raylib"));
+    exe.linkLibrary(raylib_artifact);
 
     // This declares intent for the executable to be installed into the
     // standard location when the user invokes the "install" step (the default

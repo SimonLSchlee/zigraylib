@@ -6,6 +6,10 @@
             .url = "https://github.com/raysan5/raylib/archive/52f2a10db610d0e9f619fd7c521db08a876547d0.tar.gz",
             .hash = "122078ad3e79fb83b45b04bd30fb63aaf936c6774db60095bc6987d325cbe5743373",
         },
+        .raygui = .{
+            .url = "https://github.com/raysan5/raygui/archive/604d2d6ce4dfd072033b2311fd8adaba66654bde.tar.gz",
+            .hash = "1220864a314db60a5e43df335d496c5bbe6ca82c6f2a98e9f34d3c1b00df312a79a3",
+        },
     },
     .paths = .{
         "build.zig",
