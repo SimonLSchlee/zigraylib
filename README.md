@@ -8,8 +8,8 @@ cd zigraylib
 zig build run
 ```
 
-tested with zig version: `0.13.0`  
-using raylib commit: https://github.com/raysan5/raylib/tree/52f2a10db610d0e9f619fd7c521db08a876547d0
+tested with zig version: `0.14.0`  
+using raylib commit: https://github.com/raysan5/raylib/tree/bbeade636cd8c90e18b7e9e841c20b5f8bd15d94
 
 ## resources
 [raylib cheatsheet](https://www.raylib.com/cheatsheet/cheatsheet.html)  
