@@ -1,10 +1,12 @@
 .{
-    .name = "zigraylib",
+    // TODO rename this to your project name
+    .name = .zigraylib,
     .version = "0.0.1",
+    .minimum_zig_version = "0.14.0",
     .dependencies = .{
         .raylib = .{
-            .url = "https://github.com/raysan5/raylib/archive/52f2a10db610d0e9f619fd7c521db08a876547d0.tar.gz",
-            .hash = "122078ad3e79fb83b45b04bd30fb63aaf936c6774db60095bc6987d325cbe5743373",
+            .url = "git+https://github.com/raysan5/raylib#097e80d1c4c46a148177def64d74f4deeb862cca",
+            .hash = "raylib-5.5.0-whq8uI5GzQBHJoIn5g1TYDaU3tZCZM4eKFNj6cdXLW6D",
         },
     },
     .paths = .{
@@ -13,4 +15,6 @@
         "README.md",
         "src",
     },
+    // TODO delete this line so that `zig build` suggests a new value for your own project
+    .fingerprint = 0xa0f06be1ec16bcd9,
 }

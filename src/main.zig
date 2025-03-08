@@ -1,5 +1,6 @@
 const std = @import("std");
-const ray = @import("raylib.zig");
+const builtin = @import("builtin");
+const ray = @import("raylib.zig").raylib;
 
 pub fn main() !void {
     try ray_main();
@@ -7,7 +8,19 @@ pub fn main() !void {
     try hints();
 }
 
+var debug_allocator: std.heap.DebugAllocator(.{}) = .init;
+
 fn ray_main() !void {
+    var gpa, const is_debug = gpa: {
+        if (builtin.os.tag == .wasi) break :gpa .{ std.heap.wasm_allocator, false };
+        break :gpa switch (builtin.mode) {
+            .Debug, .ReleaseSafe => .{ debug_allocator, true },
+            .ReleaseFast, .ReleaseSmall => .{ std.heap.smp_allocator, false },
+        };
+    };
+    defer _ = if (is_debug) debug_allocator.deinit();
+    var allocator = gpa.allocator();
+
     // const monitor = ray.GetCurrentMonitor();
     // const width = ray.GetMonitorWidth(monitor);
     // const height = ray.GetMonitorHeight(monitor);
@@ -17,15 +30,6 @@ fn ray_main() !void {
     ray.SetConfigFlags(ray.FLAG_MSAA_4X_HINT | ray.FLAG_VSYNC_HINT);
     ray.InitWindow(width, height, "zig raylib example");
     defer ray.CloseWindow();
-
-    var gpa = std.heap.GeneralPurposeAllocator(.{ .stack_trace_frames = 8 }){};
-    const allocator = gpa.allocator();
-    defer {
-        switch (gpa.deinit()) {
-            .leak => @panic("leaked memory"),
-            else => {},
-        }
-    }
 
     const colors = [_]ray.Color{ ray.GRAY, ray.RED, ray.GOLD, ray.LIME, ray.BLUE, ray.VIOLET, ray.BROWN };
     const colors_len: i32 = @intCast(colors.len);
@@ -92,6 +96,7 @@ fn hints() !void {
     try stdout.print("Run `zig build -Doptimize=ReleaseSmall` for a small release build\n", .{});
     try stdout.print("Run `zig build -Doptimize=ReleaseSmall -Dstrip=true` for a smaller release build, that strips symbols\n", .{});
     try stdout.print("Run `zig build -Draylib-optimize=ReleaseFast` for a debug build of your application, that uses a fast release of raylib (if you are only debugging your code)\n", .{});
+    try stdout.print("\nDon't forget to update your `build.zig.zon`!\n", .{});
 
     try bw.flush(); // don't forget to flush!
 }
