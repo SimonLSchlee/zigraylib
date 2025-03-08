@@ -37,10 +37,19 @@ pub fn build(b: *std.Build) void {
     ) orelse false;
     exe.root_module.strip = strip;
 
-    const raylib = @import("raylib");
-    const raylib_artifact = try raylib.addRaylib(b, target, raylib_optimize, .{
-        .raygui = true,
+    const raylib_dep = b.dependency("raylib", .{
+        .target = target,
+        .optimize = raylib_optimize,
     });
+    const raygui_dep = b.dependency("raygui", .{
+        .target = target,
+        .optimize = raylib_optimize,
+    });
+
+    const raylib_artifact = raylib_dep.artifact("raylib");
+
+    const raylib = @import("raylib");
+    raylib.addRaygui(b, raylib_artifact, raygui_dep);
     exe.linkLibrary(raylib_artifact);
 
     // This declares intent for the executable to be installed into the

@@ -9,8 +9,8 @@
             .hash = "raylib-5.5.0-whq8uGZGzQDi3_L7tJzgEINoZN-HwmOs0zkkc2g7ysIZ",
         },
         .raygui = .{
-            .url = "https://github.com/raysan5/raygui/archive/604d2d6ce4dfd072033b2311fd8adaba66654bde.tar.gz",
-            .hash = "1220864a314db60a5e43df335d496c5bbe6ca82c6f2a98e9f34d3c1b00df312a79a3",
+            .url = "git+https://github.com/raysan5/raygui#9a95871701a5fc63bea35eab73fef6414e048b73",
+            .hash = "N-V-__8AAPZ7UgBpukXNy27vajQpyiPrEZpV6jOLzI6-Otc_",
         },
     },
     .paths = .{
