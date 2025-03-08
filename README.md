@@ -9,7 +9,7 @@ zig build run
 ```
 
 tested with zig version: `0.14.0`  
-using raylib commit: https://github.com/raysan5/raylib/tree/097e80d1c4c46a148177def64d74f4deeb862cca
+using raylib commit: https://github.com/raysan5/raylib/tree/bbeade636cd8c90e18b7e9e841c20b5f8bd15d94
 
 ## resources
 [raylib cheatsheet](https://www.raylib.com/cheatsheet/cheatsheet.html)  
