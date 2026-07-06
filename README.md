@@ -1,3 +1,7 @@
+## This project has moved
+
+⚠️ This repository is now maintained at [codeberg.org/SimonLSchlee/zigraylib](https://codeberg.org/SimonLSchlee/zigraylib)
+
 # zigraylib
 A fairly minimal [raylib](https://www.raylib.com/) [zig](https://ziglang.org/download/) example codebase using the zig package manager.
 
